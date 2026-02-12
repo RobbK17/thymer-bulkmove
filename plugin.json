@@ -1,0 +1,7 @@
+{
+  "ver": 1,
+  "name": "Bulk Move Notes",
+  "icon": "ti-files",
+  "description": "Select a collection, choose notes, and move them into another collection",
+  "show_cmdpal_items": true
+}
