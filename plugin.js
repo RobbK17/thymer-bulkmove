@@ -1,5 +1,5 @@
 /**
- * Bulk Move Notes - Thymer App Plugin v 1.01 
+ * Bulk Move Notes - Thymer App Plugin v 1.02 
  * ---------------------------------------------------------------------------
  * Select a source collection, pick records, and move them into a target collection
  * using the SDK's native move API:
@@ -37,20 +37,21 @@ class Plugin extends AppPlugin {
     }
 
     // ---- Inject CSS (once per open) ----
+    // Uses Thymer standard theme variables: --bg-default, --text-default, --text-muted, --border-default, --font-family
     const css = `
       .bulkmove-overlay {
         position: fixed; inset: 0;
-        background: rgba(0,0,0,0.45);
+        background: var(--overlay-bg, rgba(0,0,0,0.45));
         display: flex; align-items: center; justify-content: center;
         z-index: 10000;
-        font-family: var(--font-family), sans-serif;
+        font-family: var(--font-family, inherit), sans-serif;
       }
       .bulkmove-modal {
         background: var(--bg-default, #1f1f1f);
         color: var(--text-default, #f0f0f0);
         border: 1px solid var(--border-default, #333);
         border-radius: 12px;
-        box-shadow: 0 12px 44px rgba(0,0,0,0.35);
+        box-shadow: var(--shadow-modal, 0 12px 44px rgba(0,0,0,0.35));
         width: 92%; max-width: 760px;
         max-height: 88vh;
         display: flex; flex-direction: column;
@@ -108,7 +109,7 @@ class Plugin extends AppPlugin {
         border: 1px solid var(--border-default, #333);
         border-radius: 12px;
         overflow: hidden;
-        background: rgba(255,255,255,0.02);
+        background: var(--bg-elevated, var(--bg-default, rgba(255,255,255,0.04)));
       }
       .bulkmove-listheader {
         padding: 10px 12px;
@@ -140,7 +141,7 @@ class Plugin extends AppPlugin {
         align-items: center;
         gap: 10px;
         padding: 10px 12px;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
+        border-bottom: 1px solid var(--border-subtle, var(--border-default, rgba(0,0,0,0.08)));
       }
       .bulkmove-item:last-child { border-bottom: none; }
       .bulkmove-item .name {
@@ -178,7 +179,7 @@ class Plugin extends AppPlugin {
         font-size: 0.92rem;
       }
       .bulkmove-btn.primary {
-        border-color: rgba(255,255,255,0.25);
+        border-color: var(--border-emphasis, var(--border-default, rgba(0,0,0,0.2)));
       }
       .bulkmove-btn:disabled {
         opacity: 0.5;
